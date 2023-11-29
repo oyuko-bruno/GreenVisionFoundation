@@ -1,0 +1,87 @@
+{% extends 'layout.html' %}
+
+{% load static %}
+
+  {% block body %}
+
+<div class="container">
+
+    <div class="row">
+
+
+              <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+                    <strong>{{message}}</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+
+        <div class="col-md-5">
+
+            <form method="POST" action="{% url 'stkpush:pay'%}">
+                {% csrf_token %}
+
+                <label class="form-label mt-5">Phone Number</label>
+                <input type="number" name="phone" value="254" class="form-control">
+
+                <label class="form-label mt-5">Amount</label>
+                <input type="number" name="amount" class="form-control">
+
+                <input type="submit" name="submit" class="form-control mt-5 btn btn-success" value="pay">
+            </form>
+
+        </div>
+
+        <div class="col-md-7">
+
+        </div>
+
+    </div>
+</div>
+<style>
+    .container {
+  background-color: green;
+  padding: 50px;
+}
+
+.alert {
+  background-color: #79bd9a;
+  color: white;
+  border: 1px solid #66a37d;
+}
+
+.alert-dismissible .btn-close {
+  color: white;
+}
+
+.col-md-5 {
+  background-color: #d9ead3;
+  padding: 20px;
+  border: 1px solid #c6d9b9;
+}
+
+.form-label {
+  color: #212529;
+  font-weight: bold;
+}
+
+.form-control {
+  background-color: #f8f9fa;
+  border: 1px solid #e9ecef;
+  color: #212529;
+}
+
+.btn-success {
+  background-color: #008000;
+  border: 1px solid #006600;
+  color: white;
+}
+
+.col-md-7 {
+  background-color: #f0ffff;
+  padding: 20px;
+  border: 1px solid #e6e6e6;
+}
+
+</style>
+
+ {% endblock %}
+
